@@ -39,7 +39,7 @@ function getLesFichesFrais($pdo)
 /**
  * Donne les id des frais forfaits
  * @param type $pdo
- * @return type Retourne un tableau avec toutes les id des frais forfaits
+ * @return type Retourne un tableau avec tous les id des frais forfaits
  */
 function getLesIdFraisForfait($pdo)
 {
