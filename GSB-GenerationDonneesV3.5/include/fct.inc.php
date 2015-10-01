@@ -8,11 +8,6 @@
  */
  
 /**
- * 
- * @param type $pdo
- * @return type
- */
-/**
  * Retourne un tableau avec tous les visisteurs
  * @param type $pdo
  * @return type Retourne un tableau avec tous les visiteurs
@@ -292,19 +287,7 @@ function creationFraisHorsForfait($pdo)
 		}
 	}
 }
-/**
- * retourne le mois au format aaaamm selon le jour dans le mois
- 
- * @param $date au format  jj/mm/aaaa
- * @return le mois au format aaaamm
-*/
-function getMois($date){
-		@list($jour,$mois,$annee) = explode('/',$date);
-		if(strlen($mois) == 1){
-			$mois = "0".$mois;
-		}
-		return $annee.$mois;
-}
+
 /**
  * Met à a jour la fiche de frais
  * @param type $pdo
