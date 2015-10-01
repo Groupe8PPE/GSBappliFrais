@@ -1,10 +1,9 @@
 <?php
-
 /** 
  * Fonctions pour l'application GSB
  
  * @package default
- * @author Bernard Marine
+ * @author Bernard Marine Gambet Elodie
  * @version    1.0
  */
  
@@ -13,6 +12,11 @@
  * @param type $pdo
  * @return type
  */
+/**
+ * Retourne un tableau avec tous les visisteurs
+ * @param type $pdo
+ * @return type Retourne un tableau avec tous les visiteurs
+ */
 function getLesVisiteurs($pdo)
 {
 		$req = "select * from visiteur";
@@ -20,7 +24,11 @@ function getLesVisiteurs($pdo)
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 }
-
+/**
+ * Donne les fiches de frais
+ * @param type $pdo
+ * @return type Retourne un tableau avec toutes les fiches de frais
+ */
 function getLesFichesFrais($pdo)
 {
 		$req = "select * from ficheFrais";
@@ -28,7 +36,11 @@ function getLesFichesFrais($pdo)
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 }
-
+/**
+ * Donne les id des frais forfaits
+ * @param type $pdo
+ * @return type Retourne un tableau avec toutes les id des frais forfaits
+ */
 function getLesIdFraisForfait($pdo)
 {
 		$req = "select fraisforfait.id as id from fraisforfait order by fraisforfait.id";
@@ -36,14 +48,24 @@ function getLesIdFraisForfait($pdo)
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 }
+/**
+ * Donne le dernier mois où le visiteur a eu une fiche
+ * @param type $pdo
+ * @param type $idVisiteur
+ * @return type Retourne le dernier mois 
+ */
 function getDernierMois($pdo, $idVisiteur)
 {
 		$req = "select max(mois) as dernierMois from fichefrais where idVisiteur = '$idVisiteur'";
 		$res = $pdo->query($req);
 		$laLigne = $res->fetch();
 		return $laLigne['dernierMois'];
-
 }
+/**
+ * Donne le mois suivant
+ * @param type $mois
+ * @return type  Concaténation de l'année et du mois 
+ */
 function getMoisSuivant($mois){
 		$numAnnee =substr( $mois,0,4);
 		$numMois =substr( $mois,4,2);
@@ -53,12 +75,16 @@ function getMoisSuivant($mois){
 		}
 		else{
 			$numMois++;
-
 		}
 		if(strlen($numMois)==1)
 			$numMois="0".$numMois;
 		return $numAnnee.$numMois;
 }
+/**
+ * Donne le mois précédent
+ * @param type $mois
+ * @return type  Concaténation de l'année et du mois
+ */
 function getMoisPrecedent($mois){
 		$numAnnee =substr( $mois,0,4);
 		$numMois =substr( $mois,4,2);
@@ -73,6 +99,10 @@ function getMoisPrecedent($mois){
 			$numMois="0".$numMois;
 		return $numAnnee.$numMois;
 }
+/**
+ * Créer une fiche de frais
+ * @param type $pdo
+ */
 function creationFichesFrais($pdo)
 {
 	$lesVisiteurs = getLesVisiteurs($pdo);
@@ -116,6 +146,10 @@ function creationFichesFrais($pdo)
 		}
 	}
 }
+/**
+ * Créer un frais forfait
+ * @param type $pdo
+ */
 function creationFraisForfait($pdo)
 {
 	$lesFichesFrais= getLesFichesFrais($pdo);
@@ -140,8 +174,11 @@ function creationFraisForfait($pdo)
 			$pdo->exec($req);	
 		}
 	}
-
 }
+/**
+ * Donne des frais hors forfait 
+ * @return array   Retourne un tableau de frais hors forfait
+ */
 function getDesFraisHorsForfait()
 {
 	$tab = array(
@@ -192,6 +229,11 @@ function getDesFraisHorsForfait()
 		);
 	return $tab;
 }
+
+/**
+ * Met à jour le mot de passe du visiteur
+ * @param type $pdo
+ */
 function updateMdpVisiteur($pdo)
 {
 	$req = "select * from visiteur";
@@ -214,6 +256,10 @@ function updateMdpVisiteur($pdo)
 
 
 }
+/**
+ * Création d'un frais Hors Forfait (ajout de (idVisiteur,mois,libelle,date,montant))
+ * @param type $pdo
+ */
 function creationFraisHorsForfait($pdo)
 {
 	$desFrais = getDesFraisHorsForfait();
@@ -246,6 +292,12 @@ function creationFraisHorsForfait($pdo)
 		}
 	}
 }
+/**
+ * retourne le mois au format aaaamm selon le jour dans le mois
+ 
+ * @param $date au format  jj/mm/aaaa
+ * @return le mois au format aaaamm
+*/
 function getMois($date){
 		@list($jour,$mois,$annee) = explode('/',$date);
 		if(strlen($mois) == 1){
@@ -253,6 +305,10 @@ function getMois($date){
 		}
 		return $annee.$mois;
 }
+/**
+ * Met à a jour la fiche de frais
+ * @param type $pdo
+ */
 function majFicheFrais($pdo)
 {
 	
