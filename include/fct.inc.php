@@ -1,18 +1,22 @@
 ﻿<?php
+
 /** 
  * Fonctions pour l'application GSB
  
  * @package default
- * @author Cheri Bibi
+ * @author Bernard Marine
  * @version    1.0
  */
- /**
+ 
+/**
  * Teste si un quelconque visiteur est connecté
  * @return vrai ou faux 
  */
-function estConnecte(){
-  return isset($_SESSION['idVisiteur']);
+    function estConnecte()
+{      
+    return isset($_SESSION['idVisiteur']);
 }
+
 /**
  * Enregistre dans une variable session les infos d'un visiteur
  
@@ -20,6 +24,7 @@ function estConnecte(){
  * @param $nom
  * @param $prenom
  */
+
 function connecter($id,$nom,$prenom){
 	$_SESSION['idVisiteur']= $id; 
 	$_SESSION['nom']= $nom;
@@ -51,19 +56,6 @@ function dateAnglaisVersFrancais($maDate){
    @list($annee,$mois,$jour)=explode('-',$maDate);
    $date="$jour"."/".$mois."/".$annee;
    return $date;
-}
-/**
- * retourne le mois au format aaaamm selon le jour dans le mois
- 
- * @param $date au format  jj/mm/aaaa
- * @return le mois au format aaaamm
-*/
-function getMois($date){
-		@list($jour,$mois,$annee) = explode('/',$date);
-		if(strlen($mois) == 1){
-			$mois = "0".$mois;
-		}
-		return $annee.$mois;
 }
 
 /* gestion des erreurs*/
