@@ -24,7 +24,7 @@ switch($action){
 	  break;
 	}
 	case 'validerCreationFrais':{
-		$dateFrais = $_REQUEST['dateFrais'];
+		$dateFrais = $_REQUEST['datefrais'];
 		$libelle = $_REQUEST['libelle'];
 		$montant = $_REQUEST['montant'];
 		valideInfosFrais($dateFrais,$libelle,$montant);
@@ -37,7 +37,7 @@ switch($action){
 		break;
 	}
 	case 'supprimerFrais':{
-		$idFrais = $_REQUEST['idFrais'];
+		$idFrais = $_REQUEST['idfrais'];
 	    $pdo->supprimerFraisHorsForfait($idFrais);
 		break;
 	}

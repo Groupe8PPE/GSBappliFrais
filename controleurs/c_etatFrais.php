@@ -23,10 +23,10 @@ switch($action){
 		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur,$leMois);
 		$numAnnee =substr( $leMois,0,4);
 		$numMois =substr( $leMois,4,2);
-		$libEtat = $lesInfosFicheFrais['libEtat'];
-		$montantValide = $lesInfosFicheFrais['montantValide'];
-		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
-		$dateModif =  $lesInfosFicheFrais['dateModif'];
+		$libEtat = $lesInfosFicheFrais['libetat'];
+		$montantValide = $lesInfosFicheFrais['montantvalide'];
+		$nbJustificatifs = $lesInfosFicheFrais['nbjustificatifs'];
+		$dateModif =  $lesInfosFicheFrais['datemodif'];
 		$dateModif =  dateAnglaisVersFrancais($dateModif);
 		include("vues/v_etatFrais.php");
 	}
