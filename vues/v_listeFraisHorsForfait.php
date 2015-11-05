@@ -1,4 +1,4 @@
-﻿
+
 <table class="listeLegere">
   	   <caption>Descriptif des éléments hors forfait
        </caption>

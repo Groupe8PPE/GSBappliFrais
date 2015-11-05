@@ -1,3 +1,3 @@
-﻿<div id="accueil">
+<div id="accueil">
 GESTION DES FRAIS
 </div>

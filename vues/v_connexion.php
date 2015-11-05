@@ -1,4 +1,4 @@
-﻿<div id="contenu">
+<div id="contenu">
       <h2>Identification utilisateur</h2>
 
 

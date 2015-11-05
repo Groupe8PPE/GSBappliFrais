@@ -1,5 +1,5 @@
-﻿    <!-- Division pour le sommaire -->
-    <div id="menuGauche">
+   <!-- Division pour le sommaire -->
+   <div id="menuGauche">
      <div id="infosUtil">
     
         <h2>

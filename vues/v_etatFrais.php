@@ -1,4 +1,4 @@
-﻿
+
 <h3>Fiche de frais du mois <?php echo $numMois."-".$numAnnee?> : 
     </h3>
     <div class="encadre">
